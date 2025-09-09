@@ -3,7 +3,7 @@ const database = require('./database');
 const url = 'https://www.reddit.com/reddits.json';
 
 
-//Método para consultar las tareas
+//Método para consultar los temas
 const consultarTemas = async () => {
     let connection;
     try {
@@ -111,7 +111,7 @@ const consultarTemas = async () => {
                     }
                 }
                 if (sizesInserted) {
-                    console.log(`Se insertaron los datos en subreddit_sizes de la tarea con id: ${subreddit.id}.`);
+                    console.log(`Se insertaron los datos en subreddit_sizes del tema con id: ${subreddit.id}.`);
                 } else {
                     console.log(`No se encontraron datos de tamaños para insertar en subreddit_sizes: ${subreddit.id}.`);
                 }
@@ -128,7 +128,7 @@ const consultarTemas = async () => {
                             [subreddit.id, media_type]
                         );
                     }
-                    console.log(`Se insertaron los datos en subreddit_comments_media de la tarea:${subreddit.id}.`);
+                    console.log(`Se insertaron los datos en subreddit_comments_media del tema:${subreddit.id}.`);
                 } else {
                     console.log(`No se encontraron datos de medios de comentarios para insertar en subreddit_comments_media: ${subreddit.id}.`);
                 }
@@ -144,7 +144,7 @@ const consultarTemas = async () => {
                             [subreddit.id, flair.e ?? null, flair.t ?? null]
                         );
                     }
-                    console.log(`Se insertaron los datos en subreddit_flair_richtext de la tarea: ${subreddit.id}.`);
+                    console.log(`Se insertaron los datos en subreddit_flair_richtext del tema: ${subreddit.id}.`);
                 } else {
                     console.log(`No se encontraron datos de flair richtext para insertar en subreddit_flair_richtext: ${subreddit.id}.`);
                 }
@@ -158,7 +158,7 @@ const consultarTemas = async () => {
                         `INSERT INTO subreddit_comment_settings (subreddit_id, allowed_media_types) VALUES (?, ?)`,
                         [subreddit.id, subreddit.comment_contribution_settings.allowed_media_types ?? null]
                     );
-                    console.log(`Se insertrn los datos en subreddit_comment_settings de la tarea: ${subreddit.id}.`);
+                    console.log(`Se insertrn los datos en subreddit_comment_settings del tema: ${subreddit.id}.`);
                 } else {
                     console.log(`No se encontraron datos de configuración de comentarios para insertar en subreddit_comment_settings: ${subreddit.id}.`);
                 }

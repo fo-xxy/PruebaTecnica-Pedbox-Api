@@ -1,8 +1,8 @@
 const database = require('./database');
 
 
-// Método para consultar la tareas desde base de datos
-const getTareasBD = async (tareaId = null) => {
+// Método para consultar los temas desde base de datos
+const getTemasBD = async (temaId = null) => {
 
     let connection;
     try {
@@ -39,14 +39,14 @@ const getTareasBD = async (tareaId = null) => {
             FROM subreddits
         `;
 
-        // Si se envia la tareaId, agregamos la condición WHERE id = ?
-        if (tareaId) {
+        // Si se envia el temaId, agregamos la condición WHERE id = ?
+        if (temaId) {
             query += ` WHERE id = ?`;  
         } else {
             query += ` LIMIT 25`; 
         }
 
-        const [rows] = await connection.execute(query, tareaId ? [tareaId] : []);
+        const [rows] = await connection.execute(query, temaId ? [temaId] : []);
 
         if (rows.length === 0) {
             console.log('No se encontraron registros.');
@@ -57,7 +57,7 @@ const getTareasBD = async (tareaId = null) => {
         return rows;
 
     } catch (error) {
-        console.error('Error al obtener las tareas:', error.message);
+        console.error('Error al obtener los temas:', error.message);
         return null;
     } finally {
         if (connection) {
@@ -68,39 +68,39 @@ const getTareasBD = async (tareaId = null) => {
     }
 };
 
-// Función para obtener todas las tareas
-const getAllTareas = async () => {
+// Función para obtener todas los temas
+const getAllTemas = async () => {
     try {
-        const subreddits = await getTareasBD();
+        const subreddits = await getTemasBD();
         if (subreddits) {
         } else {
-            console.log('No se encontraron datos de las tareas.');
+            console.log('No se encontraron datos de los temas.');
         }
         return subreddits;
     } catch (error) {
-        console.error('Error al consultar las tareas desde la base de datos:', error.message);
+        console.error('Error al consultar los temas desde la base de datos:', error.message);
         return null;
     }
 };
 
-// Función para obtener una tarea por su ID
-const getTareaById = async (tareaId) => {
+// Función para obtener un tema por su ID
+const getTemaById = async (temaId) => {
     try {
-        const subreddits = await getTareasBD(tareaId);
+        const subreddits = await getTemasBD(temaId);
         if (subreddits && subreddits.length > 0) {
         } else {
-            console.log('No se encontró la tarea con el Id:', tareaId);
+            console.log('No se encontró el tema con el Id:', temaId);
         }
         return subreddits;
     } catch (error) {
-        console.error('Error al consultar la tarea desde la base de datos:', error.message);
+        console.error('Error al consultar el tema desde la base de datos:', error.message);
         return null;
     }
 };
 
 
 
-module.exports = { getAllTareas, getTareaById };
+module.exports = { getAllTemas, getTemaById };
 
 
 

@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const tareasController = require("../../controllers/tareasController");
+const temasController = require("../../controllers/temasController");
 
 
 //Aquí se llaman los endpoints
 router
-    .get("/", tareasController.getAllTareas)
+    .get("/", temasController.getAllTemas)
 
-    .get("/:tareaId", tareasController.getTareaId)
+    .get("/:temaId", temasController.getTemaId)
     
 
 module.exports = router;
