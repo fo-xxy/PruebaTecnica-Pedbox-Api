@@ -13,7 +13,7 @@ const mysql = require('mysql2/promise');
 const dbConfig = {
   host: process.env.MYSQLHOST || 'localhost',
   user: process.env.MYSQLUSER || 'root',
-  password: process.env.MYSQLPASSWORD || '',
+  password: process.env.MYSQLPASSWORD || '001001',
   database: process.env.MYSQLDATABASE || 'pedbox_temas',
   port: process.env.MYSQLPORT || 3306,
   waitForConnections: true,
