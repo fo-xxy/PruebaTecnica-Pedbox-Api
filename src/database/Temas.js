@@ -6,6 +6,8 @@ const getTemasBD = async (temaId = null) => {
 
     let connection;
     try {
+
+
        //Se isntancia la conexión a la base de datos.
         connection = await database.createConnection();
 
@@ -83,18 +85,23 @@ const getAllTemas = async () => {
     }
 };
 
-// Función para obtener un tema por su ID
+
+
+// Función para obtener un tema por id
+
 const getTemaById = async (temaId) => {
     try {
-        const subreddits = await getTemasBD(temaId);
-        if (subreddits && subreddits.length > 0) {
-        } else {
-            console.log('No se encontró el tema con el Id:', temaId);
+        // Aquí asumo que `Temas.getTemaById` devuelve una promesa que resuelve el tema encontrado
+        const temaById = await getTemasBD(temaId);
+
+        if (!temaById) {
+            throw new Error('Tema no encontrado');
         }
-        return subreddits;
+
+        return temaById; // Retorna el tema si es encontrado
     } catch (error) {
-        console.error('Error al consultar el tema desde la base de datos:', error.message);
-        return null;
+        console.error('Error al obtener tema:', error);
+        throw error;  // Lanzamos el error para que el controlador pueda manejarlo
     }
 };
 
@@ -122,3 +129,21 @@ module.exports = { getAllTemas, getTemaById };
 };
 
 module.exports = { getAllTareas };*/
+
+
+
+//Prueba
+// Función para obtener un tema por su ID
+/*const getTemaById = async (temaId) => {
+    try {
+        const subreddits = await getTemasBD(temaId);
+        if (subreddits && subreddits.length > 0) {
+        } else {
+            console.log('No se encontró el tema con el Id:', temaId);
+        }
+        return subreddits;
+    } catch (error) {
+        console.error('Error al consultar el tema desde la base de datos:', error.message);
+        return null;
+    }
+};*/

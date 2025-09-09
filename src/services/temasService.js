@@ -1,4 +1,8 @@
 const Temas = require("../database/Temas");
+const TemasUrl = require("../database/InsertTareasBD");
+
+
+//Instancias o interfaces para llamar los servicios
 
 const getAllTemas = async  () => {
     const allTemas =   await Temas.getAllTemas();  
@@ -12,7 +16,14 @@ const getTemaId = async (temaId) => {
 
 }
 
+const getTemasURl = async  () => {
+    const allTemas =   await TemasUrl.consultarTemas(); 
+    
+    return allTemas;
+};
+
 module.exports = {
     getAllTemas,
-    getTemaId
+    getTemaId,
+    getTemasURl
 };
