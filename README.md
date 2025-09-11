@@ -1,3 +1,7 @@
+Se actualiza solo el readme, ya que hace unos minutos evidencié que no tenia la infromación que había puesto.
+
+Solo se actualiza el Readme
+
 Api para descargar y consultar los temas, ya sea todos o por id
 
 En la carpeta Docuemntacion api hay una colección de postman con 3 endposint, los cuales son:
